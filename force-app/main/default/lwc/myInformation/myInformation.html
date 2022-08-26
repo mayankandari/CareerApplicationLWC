@@ -1,0 +1,105 @@
+<!--
+  @description       : 
+  @author            : Mayank Singh Kandari
+  @group             : 
+  @last modified on  : 08-22-2022
+  @last modified by  : Mayank Singh Kandari
+-->
+<template>
+    <div class="setup">
+        <lightning-card>
+            <b><h1>{label.header}</h1></b>
+            <br/>
+            <label style="color:red; font-size:12px;">*</label><label style="font-size: 12px;">{label.req}</label>
+            <br/>
+                <lightning-radio-group name="radioGroup"
+                label={label.message}
+                options={previousemployeeoptions}
+                value={previousemployeevalue}
+                onchange={handlePreviousemployee}
+                type="radio"></lightning-radio-group>
+                <p if:true={preReq}><label style="color:red;">Please choose an option.</label></p>
+
+            <br/>
+                <template if:true={middleware}>
+                    <div class="middleware">
+                        <lightning-input type="text" name={label.label17} label={label.label17} value={employee_email_address} onchange={handleGenericChange}></lightning-input>
+                        <lightning-input type="text" name={label.label18} label={label.label18} value={work_location} onchange={handleGenericChange}></lightning-input>
+                        <lightning-input type="text" name={label.label19} label={label.label19} value={manager_name} onchange={handleGenericChange}></lightning-input>
+                        <lightning-input type="text" name={label.label20} label={label.label20} value={employee_id} onchange={handleGenericChange}></lightning-input>
+                    </div>
+                </template>
+            <br/>
+                <lightning-combobox
+                required
+                name={label.label1}
+                label={label.label1}
+                placeholder="select one"
+                value={countryvalue}
+                onchange={handleChange}
+                options={countryoptions}
+                >
+                </lightning-combobox>
+                <p if:true={preC}><label style="color:red;">Please select a country.</label></p>
+            <br/>
+            <hr/>
+            <p><label style="font-size: 16px;">{label.label2}</label></p>
+            <lightning-input type="text" name={label.label3} label={label.label3} value={givenName} onchange={handleGenericChange} required></lightning-input>
+            <p if:true={preGN}><label style="color:red;">Please input the given name.</label></p>
+
+            <lightning-input type="text" name={label.label4} label={label.label4} value={familyName} onchange={handleGenericChange} required></lightning-input>
+            <p if:true={preFN}><label style="color:red;">Please input the family name.</label></p>
+
+            <lightning-input type="text" name={label.label5} label={label.label5} value={localGivenName} onchange={handleGenericChange}></lightning-input>  
+            <lightning-input type="text" name={label.label6} label={label.label6} value={localFamilyName} onchange={handleGenericChange}></lightning-input>
+            <br/>
+            <hr/>
+            <p><label style="font-size: 16px;">{label.label7}</label></p>
+            <lightning-input type="text" name={label.label8} label={label.label8} value={addressLine1} onchange={handleGenericChange}></lightning-input>
+            <lightning-input type="text" name={label.label9} label={label.label9} value={city} onchange={handleGenericChange}></lightning-input>
+            <lightning-input type="number" min-length="6" max-length="6" name={label.label10} label={label.label10} value={postalCode} required onchange={handleGenericChange}></lightning-input>
+            <p if:true={preCP}><label style="color:red;">Please enter a city.</label></p>
+
+            <br/>
+            <hr/>
+            <lightning-input type="email" name={label.label11}  label={label.label11} value={emailAddress} onchange={handleGenericChange} required></lightning-input>
+            <p if:true={preEA}><label style="color:red;">Please input an email address.</label></p>
+
+            <br/>
+            <hr/>
+            <p><label style="font-size: 16px;">{label.label12}</label></p>
+                <lightning-combobox
+                required
+                name={label.label13}
+                label={label.label13}
+                placeholder="select one"
+                value={phonedevicetypevalue}
+                onchange={handlePhoneChange}
+                options={phonedevicetypeoptions}
+                >
+                 </lightning-combobox>
+                <p if:true={prePD}><label style="color:red;">Please select a phone device.</label></p>
+
+                 <lightning-combobox
+                 required
+                 name={label.label14}
+                 label={label.label14}
+                 placeholder="select one"
+                 value={countryphonecodevalue}
+                 onchange={handleCPCChange}
+                 options={countryphoneoptions}
+                 >
+                  </lightning-combobox>  
+                  <p if:true={preCP}><label style="color:red;">Please select the phone code.</label></p>
+     
+            <lightning-input name={label.label15}  type="number" max-length="10" min-length="10" label={label.label15} value={phoneNumber} required onchange={handleGenericChange}></lightning-input>
+                  <p if:true={prePN}><label style="color:red;">Please input the phone number.</label></p>
+            <lightning-input name={label.label16}  type="text" label={label.label16} value={phoneExtension} onchange={handleGenericChange}></lightning-input>
+                <br/>
+            <label if:true={requ} style="color:red;"> *Please fill in the required fields to proceed.</label>
+
+            <lightning-button label="Save and Continue" style="float:right;" variant="brand" onclick={handleInput}></lightning-button>
+                <br/>
+        </lightning-card>
+    </div>
+</template>

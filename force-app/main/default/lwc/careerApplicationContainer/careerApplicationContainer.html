@@ -1,0 +1,43 @@
+<!--
+  @description       : 
+  @author            : Mayank Singh Kandari
+  @group             : 
+  @last modified on  : 08-26-2022
+  @last modified by  : Mayank Singh Kandari
+-->
+<template>
+    <lightning-card>
+        <div>
+            <lightning-progress-indicator current-step={currentVal} type="base" variant="base">
+                <lightning-progress-step label="My Information" value="1"></lightning-progress-step>
+                <lightning-progress-step label="My Experience" value="2"></lightning-progress-step>
+                <lightning-progress-step label="Application Questions" value="3"></lightning-progress-step>
+                <lightning-progress-step label="Voluntary Disclosures" value="4"></lightning-progress-step>
+                <lightning-progress-step label="Review" value="5"></lightning-progress-step>
+                <lightning-progress-step label="Completed" value="6"></lightning-progress-step>
+
+            </lightning-progress-indicator>
+        </div>
+        <div if:true={myinfo}>
+                <c-my-information application={application} onpass={fetchValue}></c-my-information>
+        </div>
+        <div if:true={myexp}>
+                <c-my-experience application={application} onpass={fetchValue} onprevious={previousComp}></c-my-experience>
+        </div>
+        <div if:true={appque}>
+                <c-applications-questions application={application} onpass={fetchValue} onprevious={previousComp}></c-applications-questions>
+        </div>
+        <div if:true={volunt}>
+                <c-voluntary-disclosures application={application} onpass={fetchValue} onprevious={previousComp}></c-voluntary-disclosures>
+        </div>
+        <div if:true={rev}>
+                <c-review application={application} onprevious={previousComp}></c-review>
+        </div>
+        <div if:true={final}>
+                <c-final-component onprevious={previousComp}></c-final-component>
+        </div>
+        <div class="footer">
+            <c-footer-component ></c-footer-component>
+        </div>
+    </lightning-card>
+</template>

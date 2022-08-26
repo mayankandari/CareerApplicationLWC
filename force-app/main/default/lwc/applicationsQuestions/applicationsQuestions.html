@@ -1,0 +1,74 @@
+<!--
+  @description       : 
+  @author            : Mayank Singh Kandari
+  @group             : 
+  @last modified on  : 08-23-2022
+  @last modified by  : Mayank Singh Kandari
+-->
+<template>
+    <div class="setup">
+        <lightning-card>
+            <b><h1>{label.header}</h1></b>
+            <br/>
+            <label style="color:red; font-size:12px;">*</label><label style="font-size: 12px;">{label.req}</label>
+            <br/>
+            <lightning-textarea label={label.label1} name={label.label1} value={preferredGeographicLocation} onchange={handleChange}></lightning-textarea>
+            <p if:true={prefGL}><label style="color:red">Please enter preferred Geographic Location.</label></p>
+            <br/>
+            <lightning-combobox
+            required
+            name={label.label2}
+            label={label.label2}
+            placeholder="select one"
+            value={rightToWork}
+            onchange={handleChange}
+            options={rightToWorkOptions}
+            >
+            </lightning-combobox>
+            <p if:true={preunRTW}><label style="color:red">Please select an option.</label></p>
+
+            <br/>
+            <lightning-combobox
+            required
+            name={label.label3}
+            label={label.label3}
+            placeholder="select one"
+            value={workAuthorization}
+            onchange={handleWAChange}
+            options={workAuthorizationOptions}
+            >
+            </lightning-combobox>
+            <p if:true={preWAO}><label style="color:red">Please select an option.</label></p>
+
+            <br/>
+            <lightning-combobox
+            required
+            name={label.label4}
+            label={label.label4}
+            placeholder="select one"
+            value={nationalResident}
+            onchange={handleNRChange}
+            options={nationalResidentOptions}
+            >
+            </lightning-combobox>
+            <p if:true={prenationalResident}><label style="color:red">Please select an option.</label></p>
+
+            <br/>
+            <lightning-combobox
+            required
+            name={label.label5}
+            label={label.label5}
+            placeholder="select one"
+            value={futureOptions}
+            onchange={handleFWOChange}
+            options={futureWorkOptions}
+            >
+            </lightning-combobox>
+            <p if:true={prefuturePos}><label style="color:red">Please select an option.</label></p>
+
+            <br/> 
+            <lightning-button label="Save and Continue" style="float:right;" variant="brand" onclick={handleInput}></lightning-button>
+            <lightning-button label="Back"  style="float:right;margin-right:3%;" variant="brand" onclick={handlePrevious}></lightning-button>
+        </lightning-card>
+    </div>
+</template>

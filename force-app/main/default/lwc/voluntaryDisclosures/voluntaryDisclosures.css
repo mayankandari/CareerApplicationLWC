@@ -1,0 +1,17 @@
+h1{
+    margin:auto;
+    text-align: center;
+    font-size: large;
+
+}
+.setup{
+	margin: auto;
+	width: 60%;
+    padding: 10px;
+}
+label{
+    font-size: 10px;
+}
+/* lightning-input, lightning-combobox{
+    width: 500px;
+} */

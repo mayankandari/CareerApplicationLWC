@@ -1,0 +1,130 @@
+<!--
+  @description       : 
+  @author            : Mayank Singh Kandari
+  @group             : 
+  @last modified on  : 08-26-2022
+  @last modified by  : Mayank Singh Kandari
+-->
+<template>
+    <div class="setup">
+        <lightning-card>
+            <b><h1>{label.header}</h1></b>
+            <br/>
+            <hr/>
+            <br/>
+            <b><h1>{label.sub_header}</h1></b>
+            <br/>
+            <p><label>{label.message}</label></p>
+            <label>{previousEC}</label>
+            <br/><br/>
+            <p><label>{label.label1}</label></p>
+            <p><label>{givenName} {familyName}</label></p>
+            <p><label>{localGivenName} {localFamilyName}</label></p>
+            <br/>
+            <p><label>{label.label2}</label></p>
+            <p><label>{address}</label></p>
+            <br/>
+            <p><label>{label.label3}</label></p>
+            <p>{emailAdd}</p>
+            <br/>
+            <p><label>{label.label4}</label></p>
+            <p><label>{phone}</label></p>
+            <br/>
+            <hr/>
+            <br/>
+            <b><h1>{label.sub_sub_header}</h1></b>
+            <br/>
+
+            <template for:each={whItem} for:item="item" for:index="index">
+                <p key={item.id} style="font-weight: bold;"><label>{label.label5}</label></p>
+
+                <lightning-record-view-form
+                record-id={item.Id} 
+                key={item.id}
+                object-api-name={objectApiName}
+              >
+              <lightning-output-field field-name="Job_Title__c"> </lightning-output-field>
+              <lightning-output-field field-name="Company__c"> </lightning-output-field>
+              <lightning-output-field field-name="Location__c"> </lightning-output-field>
+              <lightning-output-field field-name="Current_Job__c"> </lightning-output-field>
+              <lightning-output-field field-name="From_Date__c"> </lightning-output-field>
+              <lightning-output-field field-name="To_Date__c"> </lightning-output-field>
+              <lightning-output-field field-name="Role_Description__c"> </lightning-output-field>
+            </lightning-record-view-form>
+            <br key={item.id}/>
+            </template>
+
+            <br/>
+            <hr/>
+            <b><h1>{label.sub1_header}</h1></b>
+            <br/>
+                <template for:each={edItem} for:item="item" for:index="index">
+                    <p key={item.id} style="font-weight: bold;"><label>{label.label6}</label></p>
+                    <lightning-record-view-form
+                    record-id={item.Id} 
+                    key={item.id}
+                    object-api-name={objectEdApiName}
+                >
+                <lightning-output-field field-name="School_or_University__c"> </lightning-output-field>
+                <lightning-output-field field-name="Degree__c"> </lightning-output-field>
+                <lightning-output-field field-name="Field_Of_Study__c"> </lightning-output-field>
+                <lightning-output-field field-name="From__c"> </lightning-output-field>
+                <lightning-output-field field-name="To_Date__c"> </lightning-output-field>
+                </lightning-record-view-form>
+                <br key={item.id}/>
+                </template>
+
+            <br/>
+            <hr/>
+            <br/>
+            <p><label>{label.label7}</label></p>
+            <p><label>{skills}</label></p>
+            <br/>
+            <hr/>
+            <br/>
+            <p><label>{label.label8}</label></p>
+            <br/>
+            <hr/>
+            <br/>
+            <p><label>{label.label9}</label></p>
+            <p><label>{website}</label></p>
+            <br/>
+            <hr/>
+            <br/>
+            <p><label>{label.label10}</label></p>
+            <p><label>{label.label1l}</label></p>
+            <p><label>{urls}</label></p>
+            <br/>
+            <hr/>
+            <br/>
+            <b><h1>{label.subs_header}</h1></b>
+            <br/>
+            <p><label>{label.label11}</label></p>
+            <p><label>{preferredGL}</label></p>
+            <br/>
+            <p><label>{label.label12}</label></p>
+            <p><label>{unrestrictedRW}</label></p>
+            <br/>
+            <p><label>{label.label13}</label></p>
+            <p><label>{workAuth}</label></p>
+            <br/>
+            <p><label>{label.label14}</label></p>
+            <p><label>{resident}</label></p>
+            <br/>
+            <p><label>{label.label15}</label></p>
+            <p><label>{futurePS}</label></p>
+            <br/><hr/><br/>
+            <b><h1>{label.subset_header}</h1></b>
+            <br/>
+            <h2 style="font-size:large;">{label.label16}</label></h2>
+            <p><label>{label.label17}</label></p>    
+            <p><label>{gender}</label></p>
+            <br/>
+            <h2 style="font-size:large;">{label.label18}</label></h2>
+            <p><label>{label.label19}</label></p>        
+            <br/>
+            <lightning-button label="Save" style="float:right;" variant="brand" onclick={handleInput}></lightning-button>  
+            <lightning-button label="Back"  style="float:right;margin-right:3%;" variant="brand" onclick={handlePrevious}></lightning-button>
+        </lightning-card>
+    </div>    
+</template>

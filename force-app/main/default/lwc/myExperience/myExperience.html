@@ -1,0 +1,132 @@
+<!--
+  @description       : 
+  @author            : Mayank Singh Kandari
+  @group             : 
+  @last modified on  : 08-26-2022
+  @last modified by  : Mayank Singh Kandari
+-->
+<template>
+    <div class="setup">
+        <lightning-card>
+            <b><h1>{label.header}</h1></b>
+            <br/>
+            <label style="color:red; font-size:12px;">*</label><label style="font-size: 12px;">{label.label1}</label>
+            <br/><br/>
+            <p><label style="font-size: 20px;">{label.label2}</label></p>
+            <p><label>{label.label3}</label></p>
+            <br/>
+            <br/>
+
+            <div if:true={whItem}>
+                <template for:each={whItem} for:item="item" for:index="index">
+                    <p key={item.id}><label style="font-size: 20px;">{label.label2}</label></p>
+                    <lightning-record-form
+                    record-id={item.Id} mode="edit"
+                    key={item.id}
+                    object-api-name={objectApiName}
+                    fields={fields}
+                    onsuccess={handleSuccess}
+                    ></lightning-record-form>
+                </template>
+            </div>
+            
+            <br/>
+                <div if:true={newItem}>
+                    <div onchange={update} for:each={items} data-id={item.id} for:item="item" key={item.id} >
+                   
+                        <p><label  style="font-size:18px">Work History (Optional) </label></p>
+    
+                        <lightning-input name='job_title' label={label.label16} required></lightning-input>
+                         <br/>
+                         <lightning-input name='company' label={label.label17} required></lightning-input>
+                         <br/>
+                         <lightning-input name='location' label={label.label18} ></lightning-input>
+                         <lightning-input name='checkboxe' type="checkbox" label={label.label19}></lightning-input>
+                         <lightning-input name='from_date' type="date" label={label.label20} ></lightning-input>
+                         <label>Value of checking is {checking}</label>
+                         <div if:false={checking}>
+                            <lightning-input name='to_date' type="date" label={label.label21}></lightning-input>
+                         </div>
+                         <lightning-textarea name='role' label={label.label22}></lightning-textarea>
+                         <lightning-button class="slds-align_absolute-center" label="Add Another" onclick={addAnother}></lightning-button>
+                        
+                    </div>
+                </div>
+                <div if:false={newItem}>
+                    <lightning-button class="slds-align_absolute-center" label="Add New" onclick={addNew}></lightning-button>
+                </div>
+            <hr/>
+            <br/>
+            <p><label style="font-size: 20px;">{label.label4}</label></p>
+            <p><label>{label.label5}</label></p>
+            Add
+            <br/>
+
+            <div if:true={lrEdForm}>
+                <template for:each={edItem} for:item="item" for:index="index">
+                    <p key={item.id}><label  style="font-size:18px">Education (Optional) </label></p>
+                    <lightning-record-form
+                    record-id={item.Id} mode="edit"
+                    key={item.id}
+                    object-api-name={objectEdApiName}
+                    fields={fieldsEd}
+                    onsuccess={handleEdSuccess}
+                    ></lightning-record-form>
+                </template>
+            </div>
+            <br/>           
+            <div if:true={newEdItem}>
+
+                <div onchange={updateEducationBar} for:each={eduItems} data-id={item.id} for:item="item" key={item.id}>
+                    <p><label  style="font-size:18px">Education (Optional) </label></p>
+
+                    <lightning-input name="school" label={label.label23} required></lightning-input>
+                    <lightning-input name="degree" label={label.label24} required></lightning-input>
+                    <lightning-input name="field_study" label={label.label25} required></lightning-input>
+                    <lightning-input name="result" label={label.label26} required></lightning-input>
+                    <lightning-input name="from_ed" type="date" label="From"></lightning-input>
+                    <lightning-input name="to_date_ed" type="date" label="To"></lightning-input>
+                    <lightning-button class="slds-align_absolute-center" label="Add Another" onclick={addAnotherEducationBar}></lightning-button>
+                    <br/><br/>
+                </div>
+            </div>
+            <div if:false={newEdItem}>
+                <lightning-button class="slds-align_absolute-center" label="Add New" onclick={addNewEd}></lightning-button>
+            </div>
+            <hr/>
+            <br/>
+            <p><label style="font-size: 20px;">{label.label6}</label></p>
+            <p><label>{label.label7}</label></p>
+            <lightning-input name={label.label8}  label={label.label8} onchange={genericChange}></lightning-input>
+            <br/>
+            <hr/>
+            <br/>
+            <p><label style="font-size: 20px;">{label.label9}</label></p>
+            <br/>
+            <p><label>{label.label10}</label></p>
+            Upload
+                <lightning-file-upload
+                label="File Upload"
+                name="fileUploader"
+                accept={acceptedFormats}
+                record-id={application}
+                multiple>
+                </lightning-file-upload>
+            <br/>
+            <hr/>
+            <br/>
+            <p><label style="font-size: 20px;">{label.label12}</label></p>
+            <p><label>{label.label13}</label></p>
+            <lightning-input name={label.label12} label={label.label12} placeholder={label.label13} onchange={genericChange} ></lightning-input>
+            <br/>
+            <hr/>
+            <br/>
+            <p><label style="font-size: 20px;">{label.label14}</label></p>
+            <lightning-input name={label.label14} label={label.label14} placeholder={label.label15} onchange={genericChange} ></lightning-input>
+            <br/>
+            <lightning-button label="Save and Continue" style="float:right;" variant="brand" onclick={handleInput}></lightning-button>
+            <lightning-button label="Back"  style="float:right;margin-right:3%;" variant="brand" onclick={handlePrevious}></lightning-button>
+
+        </lightning-card>
+    </div>
+</template>

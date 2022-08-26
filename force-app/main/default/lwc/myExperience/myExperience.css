@@ -1,0 +1,14 @@
+h1{
+    margin:auto;
+    text-align: center;
+    font-size: large;
+
+}
+.setup{
+	margin: auto;
+	width: 60%;
+    padding: 10px;
+}
+/* lightning-input, lightning-textarea, lightning-combobox{
+    width: 500px;
+} */

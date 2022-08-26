@@ -1,0 +1,44 @@
+<!--
+  @description       : 
+  @author            : Mayank Singh Kandari
+  @group             : 
+  @last modified on  : 08-23-2022
+  @last modified by  : Mayank Singh Kandari
+-->
+<template>
+    <div class="setup">
+        <lightning-card>
+            <b><h1>{label.header}</h1></b>
+            <p><label style="color:red; font-size:8px;">*</label><label style="font-size: 12px;">{label.req}</label></p>
+            <h2 style="font-size: 20px;">{label.label1}</h2>
+            <p><label>{label.label2}</label></p>
+            <p><label>{label.label3}</label></p>
+            <lightning-combobox
+            required
+            name={label.label4}
+            label={label.label4}
+            placeholder="select one"
+            value={gendervalue}
+            onchange={handleChange}
+            options={genderoptions}
+            >
+            </lightning-combobox> 
+            <p if:true={preGReq}><label style="color:red">Please select an option.</label></p>
+            <br/>
+            <h2>{label.label5}</h2>
+            <br/>
+            <p><label>{label.label6}</label></p>
+            <p><label>{label.label7}</label></p>
+            <p><label>{label.label8}</label></p>
+            <p><label>{label.label9}</label></p>
+            <p><label>{label.label10}</label></p>
+            <p><label>{label.label11}</label></p>
+            <p><label>{label.label12}</label></p>
+            <lightning-input type="checkbox" label={label.label13} onchange={handleToChange} required></lightning-input>
+            <p><label style="color: red;" if:false={checkValue}>Please click the checkbox.</label></p>
+            <lightning-button label="Save and Continue" style="float:right;" variant="brand" onclick={handleInput}></lightning-button>
+            <lightning-button label="Back"  style="float:right;margin-right:3%;" variant="brand" onclick={handlePrevious}></lightning-button>
+            <br/><br/>
+        </lightning-card>
+    </div>
+</template>
